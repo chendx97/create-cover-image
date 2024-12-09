@@ -11,7 +11,7 @@ import IconRandom from './components/icons/IconRandom.vue';
 import { iconList, SkeletonTemplates, gradientColors, singleColors, fontFamilys } from "./utils/constants";
 
 const titleVal = ref("一起来学前端呀~");
-const iconVal = ref("https://cdn.simpleicons.org/vue.js");
+const iconVal = ref("https://cdn.simpleicons.org/react");
 const selectedIcon = ref("https://cdn.simpleicons.org/vue.js");
 const authorVal = ref("河豚");
 
