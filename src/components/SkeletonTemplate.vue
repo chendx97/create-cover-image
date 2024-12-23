@@ -8,6 +8,9 @@
       <div class="title"></div>
       <div class="logo"></div>
       <div class="author"></div>
+      <div class="img-container">
+        <icon-pic class="icon-pic" />
+      </div>
     </div>
   </div>
 </template>

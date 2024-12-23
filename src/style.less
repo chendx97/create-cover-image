@@ -69,6 +69,36 @@ body {
     background-color: var(--el-fill-color-darker);
   }
 
+  .img-container {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 40%;
+    height: 80%;
+    background-color: #fff;
+    border-left: 1px solid var(--el-fill-color-darker);
+    overflow: hidden;
+    display: none;
+
+    .icon-pic {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 60%;
+      aspect-ratio: 1;
+      color: var(--el-fill-color-dark);
+    }
+
+    .img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      height: 100%;
+    }
+  }
+
   &.skeleton-two {
     .card {
       display: none;
@@ -149,6 +179,39 @@ body {
       justify-content: flex-start;
     }
   }
+
+  &.skeleton-five {
+    .card {
+      width: 80%;
+      height: 80%;
+      left: 10%;
+      top: 10%;
+    }
+
+    .title {
+      width: 34%;
+      left: 10%;
+      margin: 0 3%;
+    }
+
+    .logo {
+      left: 18%;
+      bottom: 30%;
+      width: 5%;
+    }
+
+    .author {
+      left: 25%;
+      right: auto;
+      width: 14%;
+      height: 9%;
+      justify-content: center;
+    }
+
+    .img-container {
+      display: block;
+    }
+  }
 }
 
 .preview-container.skeleton-template {
@@ -192,6 +255,12 @@ body {
       background-color: #fff;
     }
   }
+
+  &.skeleton-five {
+    .img-container {
+      border-left: none;
+    }
+  }
 }
 
 .popper-icons {
@@ -217,4 +286,12 @@ body {
     --el-input-hover-border-color: var(--el-color-error);
     --el-input-focus-border-color: var(--el-color-error);
   }
+}
+
+.links-wrapper {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-items: center;
 }

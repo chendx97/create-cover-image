@@ -9,6 +9,12 @@ import SkeletonTemplate from "./components/SkeletonTemplate.vue";
 import IconMore from './components/icons/IconMore.vue';
 import IconRandom from './components/icons/IconRandom.vue';
 import { iconList, SkeletonTemplates, gradientColors, singleColors, fontFamilys } from "./utils/constants";
+import pic1 from './assets/examples/pic1.jpg';
+import pic2 from './assets/examples/pic2.jpg';
+import pic3 from './assets/examples/pic3.jpg';
+import pic4 from './assets/examples/pic4.jpg';
+import pic5 from './assets/examples/pic5.jpg';
+import pic6 from './assets/examples/pic6.jpg';
 
 const titleVal = ref("一起来学前端呀~");
 const iconVal = ref("https://cdn.simpleicons.org/react");
@@ -82,6 +88,26 @@ const selectedFont = ref(fontFamilys[0].value);
 const fontSizeVal = ref(35);
 const getFontSize = computed(() => `${fontSizeVal.value}px`);
 
+// 配图
+const exampleUrls = [pic1, pic2, pic3, pic4, pic5, pic6];
+let exampleIdx = 0;
+const imgFile = ref();
+const imgUploadRef = ref();
+const imgUrl = ref(pic1);
+function handleImgExceed(files: File[]) {
+  imgUploadRef.value.handleStart(files[0]);
+}
+function handleImgChange(file: UploadFile) {
+  imgUrl.value = URL.createObjectURL(file.raw as Blob);
+}
+function handleGetRandomImg() {
+  exampleIdx++;
+  if (exampleIdx >= 6) {
+    exampleIdx = 0;
+  }
+  imgUrl.value = exampleUrls[exampleIdx];
+}
+
 // 尺寸
 const coverSize = ref('16:9');
 const coverWidth = ref(800);
@@ -116,6 +142,9 @@ async function handleCopyImg() {
             <img class="icon" :src="iconVal" />
           </div>
           <div class="author">{{ authorVal }}</div>
+          <div class="img-container">
+            <img v-if="imgUrl" class="img" :src="imgUrl" alt="img" />
+          </div>
         </div>
       </div>
       <div class="config-wrapper">
@@ -125,7 +154,8 @@ async function handleCopyImg() {
         </div>
         <div class="config-item">
           <div class="config-title">图标</div>
-          <el-select class="config-select" v-model="selectedIcon" @change="handleIconChange" popper-class="popper-icons">
+          <el-select class="config-select" v-model="selectedIcon" @change="handleIconChange"
+            popper-class="popper-icons">
             <template #label="{ label, value }">
               <span>{{ label }}</span>
               <img class="label-icon" :src="value" />
@@ -158,8 +188,8 @@ async function handleCopyImg() {
       <div class="setting-item">
         <div class="setting-title">背景色</div>
         <div class="gradient-colors">
-          <div :class="`gradient-item ${color === bgColor ? 'active' : ''}`" v-for="color in gradientColors" :key="color"
-            :style="{ background: color }" @click="handleChangeGradientBg(color)"></div>
+          <div :class="`gradient-item ${color === bgColor ? 'active' : ''}`" v-for="color in gradientColors"
+            :key="color" :style="{ background: color }" @click="handleChangeGradientBg(color)"></div>
           <el-popover placement="top" :width="350" trigger="click">
             <template #reference>
               <div class="more-btn">
@@ -181,7 +211,8 @@ async function handleCopyImg() {
           </el-popover>
         </div>
         <div class="single-color">
-          <el-color-picker v-model="pickerVal" show-alpha :predefine="singleColors" @active-change="handlePickerChange" />
+          <el-color-picker v-model="pickerVal" show-alpha :predefine="singleColors"
+            @active-change="handlePickerChange" />
           <el-input class="single-input" v-model="inputColorVal" @input="handleSingleInputChange" />
           <div class="random-btn" @click="handleGenerateRandomColor">
             <icon-random class="random-icon" />
@@ -195,6 +226,34 @@ async function handleCopyImg() {
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value" />
           </el-select>
           <el-slider v-model="fontSizeVal" size="small" :min="30" :max="45" :marks="{ 30: '30px', 45: '45px' }" />
+        </div>
+      </div>
+      <div v-if="['skeleton-five'].includes(selectedTemplate)" class="setting-item">
+        <div class="setting-title">
+          配图
+          <el-popover placement="top" :width="250" trigger="click">
+            <template #reference>
+              <icon-info class="icon-info" />
+            </template>
+            <div>
+              <p>以下是可参考的<b>免费</b>图片资源：</p>
+              <div class="links-wrapper">
+                <el-link href="https://picjumbo.com/" type="primary" target="_blank">picjumbo</el-link>
+                <el-link href="https://www.pexels.com/zh-cn/" type="primary" target="_blank">pexels</el-link>
+                <el-link href="https://unsplash.com" type="primary" target="_blank">unsplash</el-link>
+                <el-link href="https://pixabay.com" type="primary" target="_blank">pixabay</el-link>
+                <el-link href="https://wallpaperscraft.com/" type="primary" target="_blank">wallpaperscraft</el-link>
+                <el-link href=" https://vectorcraftr.com/" type="primary" target="_blank">vectorcraftr</el-link>
+              </div>
+            </div>
+          </el-popover>
+        </div>
+        <div class="img-wrapper">
+          <el-upload v-model:file-list="imgFile" ref="imgUploadRef" :limit="1" accept=".png,.jpg,.jpeg"
+            :show-file-list="false" :auto-upload="false" :on-exceed="handleImgExceed" :on-change="handleImgChange">
+            <el-button type="primary">上传</el-button>
+          </el-upload>
+          <el-button class="btn-random" color="#6dc5e8" @click="handleGetRandomImg">随机</el-button>
         </div>
       </div>
       <div class="setting-item">
@@ -308,6 +367,13 @@ async function handleCopyImg() {
       margin-bottom: 10px;
       font-size: 18px;
       color: #000;
+
+      .icon-info {
+        width: 20px;
+        color: var(--el-color-info);
+        cursor: pointer;
+        outline: none;
+      }
     }
 
     .skeletons-wrapper {
@@ -374,9 +440,17 @@ async function handleCopyImg() {
       display: flex;
       column-gap: 30px;
 
-
       .font-select {
         width: 150px;
+      }
+    }
+
+    .img-wrapper {
+      display: flex;
+      column-gap: 12px;
+
+      .btn-random {
+        color: #fff;
       }
     }
 
