@@ -229,12 +229,7 @@ async function handleCopyImg() {
   margin: 0 auto;
   padding: 30px 0 50px 0;
 
-  .main-left {
-    flex: 2;
-  }
-
   .main-right {
-    flex: 1;
     padding: 20px;
     background-color: #fff;
     box-shadow: var(--el-box-shadow);
@@ -317,7 +312,8 @@ async function handleCopyImg() {
 
     .skeletons-wrapper {
       display: flex;
-      gap: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .gradient-colors {
