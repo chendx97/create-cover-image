@@ -24,6 +24,7 @@ declare module 'vue' {
     IconMore: typeof import('./src/components/icons/IconMore.vue')['default']
     IconPic: typeof import('./src/components/icons/IconPic.vue')['default']
     IconRandom: typeof import('./src/components/icons/IconRandom.vue')['default']
+    MyComment: typeof import('./src/components/MyComment.vue')['default']
     MyHeader: typeof import('./src/components/MyHeader.vue')['default']
     SkeletonTemplate: typeof import('./src/components/SkeletonTemplate.vue')['default']
   }

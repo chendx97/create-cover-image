@@ -6,6 +6,7 @@ import { toBlob } from 'html-to-image';
 import { saveAs } from 'file-saver';
 import MyHeader from "./components/MyHeader.vue";
 import SkeletonTemplate from "./components/SkeletonTemplate.vue";
+import MyComment from './components/MyComment.vue';
 import IconMore from './components/icons/IconMore.vue';
 import IconRandom from './components/icons/IconRandom.vue';
 import { iconList, SkeletonTemplates, gradientColors, singleColors, fontFamilys } from "./utils/constants";
@@ -282,6 +283,7 @@ async function handleCopyImg() {
       </div>
     </div>
   </div>
+  <my-comment />
 </template>
 
 <style lang="less" scoped>
