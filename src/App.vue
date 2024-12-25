@@ -85,7 +85,7 @@ function handleGenerateRandomColor() {
 
 // 字体
 const selectedFont = ref(fontFamilys[0].value);
-const fontSizeVal = ref(35);
+const fontSizeVal = ref(40);
 const getFontSize = computed(() => `${fontSizeVal.value}px`);
 
 // 配图
@@ -229,7 +229,7 @@ async function handleCopyImg() {
           <el-select class="font-select" v-model="selectedFont">
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value" />
           </el-select>
-          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="45" :marks="{ 30: '30px', 45: '45px' }" />
+          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="50" :marks="{ 30: '30px', 50: '50px' }" />
         </div>
       </div>
       <div v-if="['skeleton-five', 'skeleton-seven', 'skeleton-eight', 'skeleton-nine'].includes(selectedTemplate)"
