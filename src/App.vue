@@ -227,7 +227,7 @@ async function handleCopyImg() {
           <el-slider v-model="fontSizeVal" size="small" :min="30" :max="45" :marks="{ 30: '30px', 45: '45px' }" />
         </div>
       </div>
-      <div v-if="['skeleton-five', 'skeleton-seven', 'skeleton-eight'].includes(selectedTemplate)" class="setting-item">
+      <div v-if="['skeleton-five', 'skeleton-seven', 'skeleton-eight', 'skeleton-nine'].includes(selectedTemplate)" class="setting-item">
         <div class="setting-title">
           配图
           <el-popover placement="top" :width="250" trigger="click">
