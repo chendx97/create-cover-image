@@ -152,7 +152,9 @@ async function handleCopyImg() {
           <div class="config-title">标题</div>
           <el-input v-model="titleVal" />
         </div>
-        <div class="config-item">
+        <div
+          v-if="['skeleton-one', 'skeleton-two', 'skeleton-three', 'skeleton-four', 'skeleton-five'].includes(selectedTemplate)"
+          class="config-item">
           <div class="config-title">图标</div>
           <el-select class="config-select" v-model="selectedIcon" @change="handleIconChange"
             popper-class="popper-icons">
@@ -171,7 +173,9 @@ async function handleCopyImg() {
             <el-button type="primary">上传图标</el-button>
           </el-upload>
         </div>
-        <div class="config-item">
+        <div
+          v-if="['skeleton-one', 'skeleton-two', 'skeleton-three', 'skeleton-four', 'skeleton-five'].includes(selectedTemplate)"
+          class="config-item">
           <div class="config-title">作者</div>
           <el-input v-model="authorVal" />
         </div>
