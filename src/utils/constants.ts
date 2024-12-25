@@ -49,7 +49,7 @@ export const iconList = [
   },
   {
     label: "Nuxt",
-    icon: "https://cdn.simpleicons.org/nuxtdotjs",
+    icon: "https://cdn.simpleicons.org/nuxt",
   },
   {
     label: "Next",
@@ -140,7 +140,7 @@ export const iconList = [
     icon: "https://cdn.simpleicons.org/stackoverflow",
   },
   {
-    label: "Vscode",
+    label: "VSCode",
     icon: "/icons/vscode.png",
   },
 ];

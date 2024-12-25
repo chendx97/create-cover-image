@@ -18,7 +18,7 @@ import pic6 from './assets/examples/pic6.jpg';
 
 const titleVal = ref("一起来学前端呀~");
 const iconVal = ref("https://cdn.simpleicons.org/react");
-const selectedIcon = ref("https://cdn.simpleicons.org/vue.js");
+const selectedIcon = ref("https://cdn.simpleicons.org/react");
 const authorVal = ref("河豚");
 
 // icon下拉框的change事件
