@@ -212,6 +212,23 @@ body {
       display: block;
     }
   }
+
+  &.skeleton-six {
+
+    .card,
+    .logo,
+    .author {
+      display: none;
+    }
+
+    .title {
+      width: 70%;
+      left: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+    }
+  }
 }
 
 .preview-container.skeleton-template {
@@ -259,6 +276,12 @@ body {
   &.skeleton-five {
     .img-container {
       border-left: none;
+    }
+  }
+
+  &.skeleton-six {
+    .title {
+      color: #fff;
     }
   }
 }
