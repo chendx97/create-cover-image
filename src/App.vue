@@ -142,8 +142,7 @@ async function handleCopyImg() {
             <img class="icon" :src="iconVal" />
           </div>
           <div class="author">{{ authorVal }}</div>
-          <div class="img-container">
-            <img v-if="imgUrl" class="img" :src="imgUrl" alt="img" />
+          <div class="img-container" :style="{ backgroundImage: `url(${imgUrl})` }">
           </div>
         </div>
       </div>
@@ -228,7 +227,7 @@ async function handleCopyImg() {
           <el-slider v-model="fontSizeVal" size="small" :min="30" :max="45" :marks="{ 30: '30px', 45: '45px' }" />
         </div>
       </div>
-      <div v-if="['skeleton-five'].includes(selectedTemplate)" class="setting-item">
+      <div v-if="['skeleton-five', 'skeleton-seven'].includes(selectedTemplate)" class="setting-item">
         <div class="setting-title">
           配图
           <el-popover placement="top" :width="250" trigger="click">

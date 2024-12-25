@@ -145,7 +145,9 @@ export const iconList = [
   },
 ];
 
-export const SkeletonTemplates = ['skeleton-one', 'skeleton-two', 'skeleton-three', 'skeleton-four', 'skeleton-five', 'skeleton-six'];
+export const SkeletonTemplates = ['skeleton-one', 'skeleton-two', 'skeleton-three', 'skeleton-four', 'skeleton-five', 'skeleton-six',
+  'skeleton-seven'
+];
 
 export const gradientColors = [
   'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
