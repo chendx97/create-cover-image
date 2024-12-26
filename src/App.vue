@@ -51,19 +51,8 @@ function handleChangeGradientBg(color: string) {
 }
 
 const gradientInputVal = ref('');
-const isInvalid = ref(false);
 function handleGradientInput() {
-  if (gradientInputVal.value === '') {
-    isInvalid.value = false;
-    return;
-  }
-  const linearGradientRegex = /^linear-gradient\(\s*((\d+deg)|to\s+(top|bottom|left|right))\s*,\s*(#[0-9A-Fa-f]{3,8}|rgba?\([^)]+\))\s*,\s*(#[0-9A-Fa-f]{3,8}|rgba?\([^)]+\))\s*\)$/;
-  if (linearGradientRegex.test(gradientInputVal.value)) {
-    isInvalid.value = false;
-    bgColor.value = gradientInputVal.value;
-  } else {
-    isInvalid.value = true;
-  }
+  bgColor.value = gradientInputVal.value;
 }
 
 const pickerVal = ref('#41bae5');
@@ -247,7 +236,7 @@ async function handleCopyImg() {
                 <el-link href="https://cssgradient.io/" type="primary" target="_blank">cssgradient.io</el-link>
                 <el-link href="https://colorffy.com/gradients" type="primary" target="_blank">colorffy</el-link>
               </p>
-              <el-input :class="`${isInvalid ? 'invalid' : ''}`" v-model="gradientInputVal" type="textarea"
+              <el-input v-model="gradientInputVal" type="textarea"
                 placeholder="输入格式：linear-gradient(to right, #e1eec3, #f05053)" @input="handleGradientInput" />
             </div>
           </el-popover>
