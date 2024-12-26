@@ -107,6 +107,25 @@ function handleTitleInputChange() {
   titleColor.value = titleInputVal.value;
 }
 
+// 作者的字体、大小、颜色
+const authorFont = ref(fontFamilys[0].value);
+const authorSize = ref(20);
+const getAuthorSize = computed(() => `${authorSize.value}px`);
+const authorColor = ref('#000');
+const authorPickerVal = ref('#000');
+const authorInputVal = ref('');
+function handleAuthorPickerChange(val: string) {
+  authorPickerVal.value = val;
+  authorColor.value = val;
+}
+function handleAuthorInputChange() {
+  if (!authorInputVal.value) {
+    authorColor.value = authorPickerVal.value;
+    return;
+  }
+  authorColor.value = authorInputVal.value;
+}
+
 // 配图
 const exampleUrls = [pic1, pic2, pic3, pic4, pic5, pic6];
 let exampleIdx = 0;
@@ -264,6 +283,22 @@ async function handleCopyImg() {
             @input="handleTitleInputChange" />
         </div>
       </div>
+      <div v-if="!['skeleton-six', 'skeleton-seven', 'skeleton-eight', 'skeleton-nine'].includes(selectedTemplate)"
+        class="setting-item">
+        <div class="setting-title">作者</div>
+        <div class="font-wrapper">
+          <el-select class="font-select" v-model="authorFont">
+            <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value" />
+          </el-select>
+          <el-slider v-model="authorSize" size="small" :min="16" :max="40" :marks="{ 16: '16px', 40: '40px' }" />
+        </div>
+        <div class="setting-title-color">
+          <el-color-picker v-model="authorPickerVal" show-alpha :predefine="singleColors"
+            @active-change="handleAuthorPickerChange" />
+          <el-input v-model="authorInputVal" placeholder="单一颜色值或linear-gradient(to right, red, blue)"
+            @input="handleAuthorInputChange" />
+        </div>
+      </div>
       <div v-if="['skeleton-five', 'skeleton-seven', 'skeleton-eight', 'skeleton-nine'].includes(selectedTemplate)"
         class="setting-item">
         <div class="setting-title">
@@ -367,7 +402,11 @@ async function handleCopyImg() {
       }
 
       .author {
+        font-size: v-bind(getAuthorSize);
         font-weight: 600;
+        color: transparent;
+        background: v-bind(authorColor);
+        background-clip: text;
       }
 
       &.skeleton-five {

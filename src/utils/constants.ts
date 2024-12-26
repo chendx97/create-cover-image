@@ -164,6 +164,8 @@ export const gradientColors = [
 ];
 
 export const singleColors = [
+  '#000',
+  '#fff',
   '#ff4500',
   '#ff8c00',
   '#ffd700',
