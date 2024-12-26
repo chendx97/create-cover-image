@@ -84,6 +84,10 @@ function handleGenerateRandomColor() {
   bgColor.value = randomColor;
 }
 
+// 卡片圆角
+const cardRadius = ref(0);
+const getCardRadius = computed(() => `${cardRadius.value}px`);
+
 // 字体
 const selectedFont = ref(fontFamilys[0].value);
 const fontSizeVal = ref(40);
@@ -224,6 +228,13 @@ async function handleCopyImg() {
           </div>
         </div>
       </div>
+      <div v-if="['skeleton-one', 'skeleton-four', 'skeleton-five'].includes(selectedTemplate)" class="setting-item">
+        <div class="setting-title">卡片</div>
+        <div class="cardradius-wrapper">
+          <span>圆角：</span>
+          <el-input-number v-model="cardRadius" :min="0" :max="50" />
+        </div>
+      </div>
       <div class="setting-item">
         <div class="setting-title">字体</div>
         <div class="font-wrapper">
@@ -322,6 +333,10 @@ async function handleCopyImg() {
       font-family: v-bind(selectedFont);
       border: none;
 
+      .card {
+        border-radius: v-bind(getCardRadius);
+      }
+
       .title {
         font-size: v-bind(getFontSize);
         font-weight: 600;
@@ -330,6 +345,12 @@ async function handleCopyImg() {
 
       .author {
         font-weight: 600;
+      }
+
+      &.skeleton-five {
+        .img-container {
+          border-radius: 0 v-bind(getCardRadius) v-bind(getCardRadius) 0;
+        }
       }
     }
   }
