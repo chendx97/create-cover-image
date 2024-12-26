@@ -88,10 +88,24 @@ function handleGenerateRandomColor() {
 const cardRadius = ref(0);
 const getCardRadius = computed(() => `${cardRadius.value}px`);
 
-// 字体
+// 标题的字体、大小、颜色
 const selectedFont = ref(fontFamilys[0].value);
 const fontSizeVal = ref(40);
 const getFontSize = computed(() => `${fontSizeVal.value}px`);
+const titleColor = ref('#000');
+const titlePickerVal = ref('#000');
+const titleInputVal = ref('');
+function handleTitlePickerChange(val: string) {
+  titlePickerVal.value = val;
+  titleColor.value = val;
+}
+function handleTitleInputChange() {
+  if (!titleInputVal.value) {
+    titleColor.value = titlePickerVal.value;
+    return;
+  }
+  titleColor.value = titleInputVal.value;
+}
 
 // 配图
 const exampleUrls = [pic1, pic2, pic3, pic4, pic5, pic6];
@@ -236,12 +250,18 @@ async function handleCopyImg() {
         </div>
       </div>
       <div class="setting-item">
-        <div class="setting-title">字体</div>
+        <div class="setting-title">标题</div>
         <div class="font-wrapper">
           <el-select class="font-select" v-model="selectedFont">
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value" />
           </el-select>
-          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="50" :marks="{ 30: '30px', 50: '50px' }" />
+          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="60" :marks="{ 30: '30px', 60: '60px' }" />
+        </div>
+        <div class="setting-title-color">
+          <el-color-picker v-model="titlePickerVal" show-alpha :predefine="singleColors"
+            @active-change="handleTitlePickerChange" />
+          <el-input v-model="titleInputVal" placeholder="单一颜色值或linear-gradient(to right, red, blue)"
+            @input="handleTitleInputChange" />
         </div>
       </div>
       <div v-if="['skeleton-five', 'skeleton-seven', 'skeleton-eight', 'skeleton-nine'].includes(selectedTemplate)"
@@ -339,6 +359,9 @@ async function handleCopyImg() {
 
       .title {
         font-size: v-bind(getFontSize);
+        color: transparent;
+        background: v-bind(titleColor);
+        background-clip: text;
         font-weight: 600;
         text-align: center;
       }
@@ -471,6 +494,12 @@ async function handleCopyImg() {
       .font-select {
         width: 150px;
       }
+    }
+
+    .setting-title-color {
+      margin-top: 20px;
+      display: flex;
+      column-gap: 30px;
     }
 
     .img-wrapper {
