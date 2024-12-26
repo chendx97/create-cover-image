@@ -115,6 +115,9 @@ function handleAuthorInputChange() {
   authorColor.value = authorInputVal.value;
 }
 
+// 图标
+const isShowIcon = ref(true);
+
 // 配图
 const exampleUrls = [pic1, pic2, pic3, pic4, pic5, pic6];
 let exampleIdx = 0;
@@ -165,7 +168,7 @@ async function handleCopyImg() {
           :style="{ aspectRatio: getCoverRatio, width: coverWidth + 'px' }">
           <div class="card"></div>
           <div class="title">{{ titleVal }}</div>
-          <div class="logo">
+          <div v-if="isShowIcon" class="logo">
             <img class="icon" :src="iconVal" />
           </div>
           <div class="author">{{ authorVal }}</div>
@@ -255,6 +258,13 @@ async function handleCopyImg() {
         <div class="cardradius-wrapper">
           <span>圆角：</span>
           <el-input-number v-model="cardRadius" :min="0" :max="50" />
+        </div>
+      </div>
+      <div v-if="['skeleton-one', 'skeleton-two', 'skeleton-three', 'skeleton-four',
+        'skeleton-five'].includes(selectedTemplate)" class="setting-item">
+        <div class="setting-title">图标</div>
+        <div>
+          <el-checkbox v-model="isShowIcon">显示</el-checkbox>
         </div>
       </div>
       <div class="setting-item">
