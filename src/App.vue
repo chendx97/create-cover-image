@@ -42,6 +42,17 @@ function handleUploadChange(file: UploadFile) {
 const selectedTemplate = ref("skeleton-one");
 function handleTemplateChange(val: string) {
   selectedTemplate.value = val;
+  if (['skeleton-one', 'skeleton-four', 'skeleton-five'].includes(selectedTemplate.value)) {
+    titleColor.value = '#000';
+    titlePickerVal.value = '#000';
+    authorColor.value = '#000';
+    authorPickerVal.value = '#000';
+  } else {
+    titleColor.value = '#fff';
+    titlePickerVal.value = '#fff';
+    authorColor.value = '#fff';
+    authorPickerVal.value = '#fff';
+  }
 }
 
 // 背景设置
