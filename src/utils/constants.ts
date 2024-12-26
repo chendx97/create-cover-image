@@ -192,11 +192,31 @@ export const fontFamilys = [
     value: 'fangsong',
   },
   {
-    label: 'cursive',
-    value: 'cursive',
+    label: 'LongCang',
+    value: 'LongCang',
   },
   {
-    label: 'fantasy',
-    value: 'fantasy',
+    label: 'MaShanZheng',
+    value: 'MaShanZheng',
   },
+  {
+    label: 'RubikVinyl',
+    value: 'RubikVinyl',
+  },
+  {
+    label: 'ZCOOLXiaoWei',
+    value: 'ZCOOLXiaoWei',
+  },
+  {
+    label: '鸿雷拙书简体',
+    value: '鸿雷拙书简体',
+  },
+  {
+    label: 'Aa剑豪体',
+    value: 'Aa剑豪体',
+  },
+  {
+    label: '萌神手写体',
+    value: '萌神手写体',
+  }
 ];

@@ -17,7 +17,7 @@ import pic4 from './assets/examples/pic4.jpg';
 import pic5 from './assets/examples/pic5.jpg';
 import pic6 from './assets/examples/pic6.jpg';
 
-const titleVal = ref("一起来学前端呀~");
+const titleVal = ref("一起来学前端呀");
 const iconVal = ref("https://cdn.simpleicons.org/react");
 const selectedIcon = ref("https://cdn.simpleicons.org/react");
 const authorVal = ref("河豚");
@@ -89,8 +89,8 @@ const cardRadius = ref(0);
 const getCardRadius = computed(() => `${cardRadius.value}px`);
 
 // 标题的字体、大小、颜色
-const selectedFont = ref(fontFamilys[0].value);
-const fontSizeVal = ref(40);
+const selectedFont = ref('鸿雷拙书简体');
+const fontSizeVal = ref(50);
 const getFontSize = computed(() => `${fontSizeVal.value}px`);
 const titleColor = ref('#000');
 const titlePickerVal = ref('#000');
@@ -108,8 +108,8 @@ function handleTitleInputChange() {
 }
 
 // 作者的字体、大小、颜色
-const authorFont = ref(fontFamilys[0].value);
-const authorSize = ref(20);
+const authorFont = ref('鸿雷拙书简体');
+const authorSize = ref(25);
 const getAuthorSize = computed(() => `${authorSize.value}px`);
 const authorColor = ref('#000');
 const authorPickerVal = ref('#000');
@@ -282,7 +282,8 @@ async function handleCopyImg() {
         <div class="setting-title">标题</div>
         <div class="font-wrapper">
           <el-select class="font-select" v-model="selectedFont">
-            <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value" />
+            <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value"
+              :style="{ fontFamily: font.value, fontSize: '18px' }" />
           </el-select>
           <el-slider v-model="fontSizeVal" size="small" :min="30" :max="60" :marks="{ 30: '30px', 60: '60px' }" />
         </div>
@@ -298,7 +299,8 @@ async function handleCopyImg() {
         <div class="setting-title">作者</div>
         <div class="font-wrapper">
           <el-select class="font-select" v-model="authorFont">
-            <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value" />
+            <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value"
+              :style="{ fontFamily: font.value, fontSize: '18px' }" />
           </el-select>
           <el-slider v-model="authorSize" size="small" :min="16" :max="40" :marks="{ 16: '16px', 40: '40px' }" />
         </div>
@@ -395,7 +397,6 @@ async function handleCopyImg() {
       // height: 400px;
       height: auto;
       background: v-bind(bgColor);
-      font-family: v-bind(selectedFont);
       border: none;
 
       .card {
@@ -408,6 +409,7 @@ async function handleCopyImg() {
         background: v-bind(titleColor);
         background-clip: text;
         font-weight: 600;
+        font-family: v-bind(selectedFont);
         text-align: center;
       }
 
@@ -417,6 +419,7 @@ async function handleCopyImg() {
         color: transparent;
         background: v-bind(authorColor);
         background-clip: text;
+        font-family: v-bind(authorFont);
       }
 
       &.skeleton-five {
@@ -541,7 +544,7 @@ async function handleCopyImg() {
       column-gap: 30px;
 
       .font-select {
-        width: 150px;
+        width: 200px;
       }
     }
 
