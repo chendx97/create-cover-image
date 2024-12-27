@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/create-cover-image/' : '/',
   server: {
     port: 3456,
   },
