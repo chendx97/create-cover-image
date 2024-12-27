@@ -93,7 +93,7 @@ export const iconList = [
   },
   {
     label: "Java",
-    icon: "/icons/java.png",
+    icon: "./icons/java.png",
   },
   {
     label: "Python",
@@ -105,7 +105,7 @@ export const iconList = [
   },
   {
     label: "Windows",
-    icon: "/icons/windows.png",
+    icon: "./icons/windows.png",
   },
   {
     label: "Linux",
@@ -141,7 +141,7 @@ export const iconList = [
   },
   {
     label: "VSCode",
-    icon: "/icons/vscode.png",
+    icon: "./icons/vscode.png",
   },
 ];
 
