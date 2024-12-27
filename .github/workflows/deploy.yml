@@ -4,7 +4,7 @@ on: # 定义触发工作流的事件，如push、pull_request等
   push: # 当有代码推送到特定分支时触发工作流
     branches: # 限定触发工作的分支，数组
       - main
-      if: contains(github.event.head_commit.message, 'deploy') # 当提交一个包含 deploy 关键字的 commit 时触发
+    if: contains(github.event.head_commit.message, 'deploy') # 当提交一个包含 deploy 关键字的 commit 时触发
 # 以上，总的来说，在main分支提交包含 deploy 的commit 时，会触发工作流
 
 jobs: # 定义工作流中的作业（job）
