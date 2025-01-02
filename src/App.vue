@@ -161,9 +161,11 @@ async function handleDownload() {
 }
 async function handleCopyImg() {
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
+  console.log(blob);
+  document.body.focus();
   await navigator.clipboard.write([
     new ClipboardItem({
-      [blob!.type]: blob as Blob
+      'image/png': blob as Blob
     })
   ]);
   ElMessage.success('复制成功');
@@ -285,7 +287,7 @@ async function handleCopyImg() {
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value"
               :style="{ fontFamily: font.value, fontSize: '18px' }" />
           </el-select>
-          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="60" :marks="{ 30: '30px', 60: '60px' }" />
+          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="80" :marks="{ 30: '30px', 80: '80px' }" />
         </div>
         <div class="setting-title-color">
           <el-color-picker v-model="titlePickerVal" show-alpha :predefine="singleColors"
@@ -302,7 +304,7 @@ async function handleCopyImg() {
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value"
               :style="{ fontFamily: font.value, fontSize: '18px' }" />
           </el-select>
-          <el-slider v-model="authorSize" size="small" :min="16" :max="40" :marks="{ 16: '16px', 40: '40px' }" />
+          <el-slider v-model="authorSize" size="small" :min="16" :max="60" :marks="{ 16: '16px', 60: '60px' }" />
         </div>
         <div class="setting-title-color">
           <el-color-picker v-model="authorPickerVal" show-alpha :predefine="singleColors"
