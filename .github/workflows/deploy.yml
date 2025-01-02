@@ -1,5 +1,9 @@
 name: Deploy to GitHub Pages
 
+# 部署方法：
+# git tag v*.*
+# git push origin v*.*
+
 on:
   push:
     tags:
