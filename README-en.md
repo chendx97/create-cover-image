@@ -1,7 +1,7 @@
 # create-cover-image
 English | [简体中文](README.md)
 
-![logo](https://cdn.jsdelivr.net/gh/chendx97/CPics/img/logo.png){width="150px"}
+<img src="https://cdn.jsdelivr.net/gh/chendx97/CPics/img/logo.png" width="100px" alt="logo" />
 
 A tool for quickly generating cover images, supporting various templates, and allowing flexible customization.
 

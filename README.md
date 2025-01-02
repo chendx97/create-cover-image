@@ -1,7 +1,7 @@
 # create-cover-image
 简体中文 | [English](README.en.md)
 
-![logo](https://cdn.jsdelivr.net/gh/chendx97/CPics/img/logo.png){width="100px"}
+<img src="https://cdn.jsdelivr.net/gh/chendx97/CPics/img/logo.png" width="100px" alt="logo" />
 
 一个快速生成封面图的工具，支持多种模板，可灵活自定义。
 
