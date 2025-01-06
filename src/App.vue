@@ -53,6 +53,11 @@ function handleTemplateChange(val: string) {
     authorColor.value = '#fff';
     authorPickerVal.value = '#fff';
   }
+  if (['skeleton-five', 'skeleton-seven', 'skeleton-eight', 'skeleton-nine'].includes(selectedTemplate.value)) {
+    imgUrl.value = pic1;
+  } else {
+    imgUrl.value = '';
+  }
 }
 
 // 背景设置
@@ -134,7 +139,7 @@ const exampleUrls = [pic1, pic2, pic3, pic4, pic5, pic6];
 let exampleIdx = 0;
 const imgFile = ref();
 const imgUploadRef = ref();
-const imgUrl = ref(pic1);
+const imgUrl = ref();
 function handleImgExceed(files: File[]) {
   imgUploadRef.value.handleStart(files[0]);
 }
@@ -158,10 +163,10 @@ const getCoverRatio = computed(() => coverSize.value.split(':').join('/'));
 async function handleDownload() {
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
   saveAs(blob, 'cover.png');
+  ElMessage.success('导出成功');
 }
 async function handleCopyImg() {
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
-  console.log(blob);
   document.body.focus();
   await navigator.clipboard.write([
     new ClipboardItem({

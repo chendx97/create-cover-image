@@ -215,8 +215,4 @@ export const fontFamilys = [
     label: 'Aa剑豪体',
     value: 'Aa剑豪体',
   },
-  {
-    label: '萌神手写体',
-    value: '萌神手写体',
-  }
 ];
