@@ -11,4 +11,4 @@
 
 ![案例](https://cdn.jsdelivr.net/gh/chendx97/CPics/img/cover.png)
 
-✨ [我的博客地址](https://chendx97.github.io/blog/)
+✨ [我的博客地址](https://chendx97.github.io)
