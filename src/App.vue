@@ -94,7 +94,7 @@ const cardRadius = ref(0);
 const getCardRadius = computed(() => `${cardRadius.value}px`);
 
 // 标题的字体、大小、颜色
-const selectedFont = ref('鸿雷拙书简体');
+const selectedFont = ref('LongCang-Regular');
 const fontSizeVal = ref(50);
 const getFontSize = computed(() => `${fontSizeVal.value}px`);
 const titleColor = ref('#000');
@@ -113,7 +113,7 @@ function handleTitleInputChange() {
 }
 
 // 作者的字体、大小、颜色
-const authorFont = ref('鸿雷拙书简体');
+const authorFont = ref('LongCang-Regular');
 const authorSize = ref(25);
 const getAuthorSize = computed(() => `${authorSize.value}px`);
 const authorColor = ref('#000');
