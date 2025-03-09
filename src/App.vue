@@ -161,12 +161,34 @@ const getCoverRatio = computed(() => coverSize.value.split(':').join('/'));
 
 // 导出
 async function handleDownload() {
+  const originFetch = window.fetch;
+  window.fetch = async (url: string, options: RequestInit) => {
+    if (typeof url === 'string' && url.match(/\.(woff|ttf|otf|woff2)$/i)) {
+      const fontName = url.split('/').pop()?.split('.')[0];
+      if (![selectedFont.value, authorFont.value].includes(fontName as string)) {
+        return Promise.reject(new Error('Font request blocked'));
+      }
+    }
+    return originFetch(url, options);
+  }
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
+  window.fetch = originFetch;
   saveAs(blob, 'cover.png');
   ElMessage.success('导出成功');
 }
 async function handleCopyImg() {
+  const originFetch = window.fetch;
+  window.fetch = async (url: string, options: RequestInit) => {
+    if (typeof url === 'string' && url.match(/\.(woff|ttf|otf|woff2)$/i)) {
+      const fontName = url.split('/').pop()?.split('.')[0];
+      if (![selectedFont.value, authorFont.value].includes(fontName as string)) {
+        return Promise.reject(new Error('Font request blocked'));
+      }
+    }
+    return originFetch(url, options);
+  }
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
+  window.fetch = originFetch;
   document.body.focus();
   await navigator.clipboard.write([
     new ClipboardItem({
@@ -292,7 +314,7 @@ async function handleCopyImg() {
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value"
               :style="{ fontFamily: font.value, fontSize: '18px' }" />
           </el-select>
-          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="80" :marks="{ 30: '30px', 80: '80px' }" />
+          <el-slider v-model="fontSizeVal" size="small" :min="30" :max="100" :marks="{ 30: '30px', 100: '100px' }" />
         </div>
         <div class="setting-title-color">
           <el-color-picker v-model="titlePickerVal" show-alpha :predefine="singleColors"
@@ -309,7 +331,7 @@ async function handleCopyImg() {
             <el-option v-for="font in fontFamilys" :key="font.label" :label="font.label" :value="font.value"
               :style="{ fontFamily: font.value, fontSize: '18px' }" />
           </el-select>
-          <el-slider v-model="authorSize" size="small" :min="16" :max="60" :marks="{ 16: '16px', 60: '60px' }" />
+          <el-slider v-model="authorSize" size="small" :min="16" :max="80" :marks="{ 16: '16px', 80: '80px' }" />
         </div>
         <div class="setting-title-color">
           <el-color-picker v-model="authorPickerVal" show-alpha :predefine="singleColors"

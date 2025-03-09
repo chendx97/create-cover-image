@@ -193,19 +193,19 @@ export const fontFamilys = [
   },
   {
     label: 'LongCang',
-    value: 'LongCang',
+    value: 'LongCang-Regular',
   },
   {
     label: 'MaShanZheng',
-    value: 'MaShanZheng',
+    value: 'MaShanZheng-Regular',
   },
   {
     label: 'RubikVinyl',
-    value: 'RubikVinyl',
+    value: 'RubikVinyl-Regular',
   },
   {
     label: 'ZCOOLXiaoWei',
-    value: 'ZCOOLXiaoWei',
+    value: 'ZCOOLXiaoWei-Regular',
   },
   {
     label: '鸿雷拙书简体',
