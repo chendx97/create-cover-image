@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus';
 import type { UploadFile } from 'element-plus';
 import { toBlob } from 'html-to-image';
 import { saveAs } from 'file-saver';
-import MyHeader from "./components/MyHeader.vue";
+import { ChenHeader } from 'chen-header';
 import SkeletonTemplate from "./components/SkeletonTemplate.vue";
 import MyComment from './components/MyComment.vue';
 import IconMore from './components/icons/IconMore.vue';
@@ -200,7 +200,7 @@ async function handleCopyImg() {
 </script>
 
 <template>
-  <my-header />
+  <ChenHeader />
   <div class="main-wrapper">
     <div class="main-left">
       <div class="preview-wrapper">
