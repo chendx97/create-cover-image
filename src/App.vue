@@ -19,6 +19,7 @@ import pic5 from './assets/examples/pic5.jpg';
 import pic6 from './assets/examples/pic6.jpg';
 
 // 禁用开发者工具
+DisableDevtool();
 DisableDevtool.md5('93ACFC199182A649');
 
 const titleVal = ref("一起来学前端呀");
