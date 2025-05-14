@@ -161,34 +161,12 @@ const getCoverRatio = computed(() => coverSize.value.split(':').join('/'));
 
 // 导出
 async function handleDownload() {
-  const originFetch = window.fetch;
-  window.fetch = async (url: string, options: RequestInit) => {
-    if (typeof url === 'string' && url.match(/\.(woff|ttf|otf|woff2)$/i)) {
-      const fontName = url.split('/').pop()?.split('.')[0];
-      if (![selectedFont.value, authorFont.value].includes(fontName as string)) {
-        return Promise.reject(new Error('Font request blocked'));
-      }
-    }
-    return originFetch(url, options);
-  }
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
-  window.fetch = originFetch;
   saveAs(blob, 'cover.png');
   ElMessage.success('导出成功');
 }
 async function handleCopyImg() {
-  const originFetch = window.fetch;
-  window.fetch = async (url: string, options: RequestInit) => {
-    if (typeof url === 'string' && url.match(/\.(woff|ttf|otf|woff2)$/i)) {
-      const fontName = url.split('/').pop()?.split('.')[0];
-      if (![selectedFont.value, authorFont.value].includes(fontName as string)) {
-        return Promise.reject(new Error('Font request blocked'));
-      }
-    }
-    return originFetch(url, options);
-  }
   const blob = await toBlob(document.querySelector('.preview-container') as HTMLElement);
-  window.fetch = originFetch;
   document.body.focus();
   await navigator.clipboard.write([
     new ClipboardItem({
