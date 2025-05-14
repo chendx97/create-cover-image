@@ -5,7 +5,6 @@ import type { UploadFile } from 'element-plus';
 import { toBlob } from 'html-to-image';
 import { saveAs } from 'file-saver';
 import { ChenHeader } from 'chen-header';
-import DisableDevtool from 'disable-devtool';
 import SkeletonTemplate from "./components/SkeletonTemplate.vue";
 import MyComment from './components/MyComment.vue';
 import IconMore from './components/icons/IconMore.vue';
@@ -17,10 +16,6 @@ import pic3 from './assets/examples/pic3.jpg';
 import pic4 from './assets/examples/pic4.jpg';
 import pic5 from './assets/examples/pic5.jpg';
 import pic6 from './assets/examples/pic6.jpg';
-
-// 禁用开发者工具
-DisableDevtool();
-DisableDevtool.md5('93ACFC199182A649');
 
 const titleVal = ref("一起来学前端呀");
 const iconVal = ref("https://cdn.simpleicons.org/react");
